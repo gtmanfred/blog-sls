@@ -16,7 +16,8 @@ ssh:
 
 /etc/ssh/sshd_config:
   file:
-    - append
-    - text: 'PermitRootLogin without-password'
+    - replace 
+    - pattern: 'PermitRootLogin yes'
+    - repl: 'PermitRootLogin without-password'
     - require:
       - pkg: ssh

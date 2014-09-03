@@ -3,6 +3,7 @@
 ssh:
   pkg:
     - installed
+
   service:
     - running
     - enable: True
@@ -15,10 +16,7 @@ ssh:
 
 /etc/ssh/sshd_config:
   file:
-    - managed
-    - source: salt://ssh/sshd_config
-    - mode: '0644'
-    - user: root
-    - group: root
+    - append
+    - text: 'PermitRootLogin without-password'
     - require:
       - pkg: ssh

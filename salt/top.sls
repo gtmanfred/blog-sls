@@ -4,3 +4,6 @@ base:
     - gtmanfred.app
   'salt*':
     - srv
+  '*':
+    - vim
+    - ssh

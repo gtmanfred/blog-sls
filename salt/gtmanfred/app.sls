@@ -104,7 +104,8 @@ gtmanfred_pkgs:
   file.managed:
     - makedirs: True
     - order: last
-    - content: {{grains['nodename']}}
+    - contents: {{grains['nodename']}}
+    - contents_newline: True
 
 disable:
   file.absent:

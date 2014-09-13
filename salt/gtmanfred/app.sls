@@ -99,6 +99,12 @@ gtmanfred_pkgs:
     - watch_in:
       - service: nginx
 
-/etc/nginx/sites-enabled/default:
-  file:
-    - absent
+/usr/share/nginx/www/health/enabled.html:
+  file.touch:
+    - makedirs: True
+    - order: last
+
+disable:
+  file.absent:
+    - name: /usr/share/nginx/www/health/enabled.html
+    - order: 1

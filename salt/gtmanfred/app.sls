@@ -37,6 +37,7 @@ gtmanfred:
   git:
     - latest
     - name: https://github.com/gtmanfred/blog.gtmanfred.com
+    - rev: autoscale
     - target: {{ gtmanfred_proj }}
     - runas: {{ gtmanfred_user }}
     - force: True

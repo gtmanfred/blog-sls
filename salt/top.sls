@@ -1,5 +1,5 @@
 base:
-  'blog.gtmanfred.com':
+  'blog*':
     - nginx
     - gtmanfred.app
   'salt*':

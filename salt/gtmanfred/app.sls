@@ -101,9 +101,10 @@ gtmanfred_pkgs:
       - service: nginx
 
 /usr/share/nginx/www/health/enabled.html:
-  file.touch:
+  file.managed:
     - makedirs: True
     - order: last
+    - content: {{grains['nodename']}}
 
 disable:
   file.absent:

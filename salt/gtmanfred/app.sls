@@ -56,6 +56,8 @@ refresh_pelican:
       - virtualenv: gtmanfred_venv
     - watch:
       - git: gtmanfred
+    - require:
+      - pip: gtmanfred_pkgs
 
 gtmanfred_theme:
   git:

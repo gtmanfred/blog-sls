@@ -1,5 +1,6 @@
 base:
   'blog*':
+    - gtmanfred.waitfirst
     - nginx
     - gtmanfred.app
   'salt*':

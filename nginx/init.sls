@@ -9,3 +9,7 @@ nginx:
       - git: gtmanfred
       - git: gtmanfred_theme
       - file: /etc/nginx/conf.d/gtmanfred.conf
+  file.absent:
+    - name: /usr/share/nginx/www/index.html
+    - require:
+      - pkg: nginx

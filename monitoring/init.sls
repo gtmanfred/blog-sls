@@ -17,3 +17,4 @@ rackspace monitoring:
 
   service.running:
     - name: rackspace-monitoring-agent
+    - enable: True

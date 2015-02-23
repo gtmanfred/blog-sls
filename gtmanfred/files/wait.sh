@@ -1,7 +1,4 @@
 #!/bin/bash
-while true; do
-    dpkg -i /dev/zero 2>&1 >/dev/null
-    if [[ $? == 1 ]]; then
-        exit 0
-    fi
+while ! apt-get --simulate install nginx; do
+    sleep 5
 done

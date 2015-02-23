@@ -1,6 +1,7 @@
 #!/bin/bash
-while ! dpkg -i /dev/zero 2>&1 >/dev/null; do
+while true; do
+    dpkg -i /dev/zero 2>&1 >/dev/null
     if [[ $? == 1 ]]; then
-        break
+        exit 0
     fi
 done

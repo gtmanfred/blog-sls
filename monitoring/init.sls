@@ -15,6 +15,14 @@ rackspace_monitoring:
     - name: /usr/bin/rackspace-monitoring-agent --setup --username {{provider.get('user', '')}} --apikey {{provider.get('api_key', '')}}
     - unless: test -f /etc/rackspace-monitoring-agent.cfg
 
+  file.managed:
+    - name: /usr/lib/rackspace-monitoring-agent/plugins/curl.sh
+    - source: salt://monitoring/files/curl.sh
+    - mode: 755
+    - user: root
+    - group: root
+    - makedirs: True
+
   service.running:
     - name: rackspace-monitoring-agent
     - enable: True

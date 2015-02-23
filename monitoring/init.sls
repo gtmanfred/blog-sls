@@ -18,3 +18,8 @@ rackspace monitoring:
   service.running:
     - name: rackspace-monitoring-agent
     - enable: True
+
+  event.send:
+    - name: newcloud/monitoring/ready
+    - data:
+        name: {{salt['cmd.run']('xenstore-read name', '')}}

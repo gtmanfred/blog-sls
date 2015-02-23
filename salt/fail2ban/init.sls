@@ -3,7 +3,7 @@ fail2ban:
     - installed
   service:
     - running
-    - watch:
+    - onchanges:
       - pkg: fail2ban
     - require:
       - pkg: fail2ban

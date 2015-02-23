@@ -10,7 +10,7 @@ ssh:
     - name: {{ ssh.service }}
     - require:
       - pkg: ssh
-    - watch:
+    - onchanges:
       - file: /etc/ssh/sshd_config
 
 

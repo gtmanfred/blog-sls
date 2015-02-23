@@ -45,7 +45,7 @@ gtmanfred:
     - require:
       - pkg: git
       - virtualenv: gtmanfred_venv
-    - watch_in:
+    - onchanges_in:
       - service: nginx
 
 refresh_pelican:
@@ -55,7 +55,7 @@ refresh_pelican:
     - name: {{ gtmanfred_venv }}/bin/pelican -s {{gtmanfred_proj}}/pelicanconf.py
     - require:
       - virtualenv: gtmanfred_venv
-    - watch:
+    - onchanges:
       - git: gtmanfred
     - require:
       - pip: gtmanfred_pkgs
@@ -71,7 +71,7 @@ gtmanfred_theme:
     - require:
       - virtualenv: gtmanfred_venv
       - git: gtmanfred
-    - watch_in:
+    - onchanges_in:
       - service: nginx
 
 
@@ -97,7 +97,7 @@ gtmanfred_pkgs:
     - require:
       - git: gtmanfred
       - pkg: nginx
-    - watch_in:
+    - onchanges_in:
       - service: nginx
 
 /usr/share/nginx/www/health/enabled.html:

@@ -1,4 +1,6 @@
 #!/bin/bash
-while pgrep dpkg 2>&1 >/dev/null; do
-    sleep 5
+while ! dpkg -i /dev/zero 2>&1 >/dev/null; do
+    if [[ $? == 1 ]]; then
+        break
+    fi
 done

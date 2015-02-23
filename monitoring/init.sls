@@ -30,6 +30,6 @@ rackspace_monitoring:
   event.send:
     - name: newcloud/monitoring/ready
     - data:
-        name: {{salt['cmd.run']('xenstore-read name', '')}}
+        name: {{grains.get('fqdn', '')}}
     - onchanges:
       - cmd: rackspace_monitoring

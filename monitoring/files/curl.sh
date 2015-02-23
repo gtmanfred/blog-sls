@@ -1,5 +1,5 @@
 #!/bin/bash
-output="$(curl -s --fail http://localhost/health/monitoring 2>/dev/null)"
+output="$(curl -s --fail http://localhost/health/monitoring.html 2>/dev/null)"
 ret="$?"
 
 printf "metric retcode int32 %d\n" $ret

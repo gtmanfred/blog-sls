@@ -1,5 +1,5 @@
 {% set provider = salt['pillar.get']('cloud:providers:pillar-nova') %}
-rackspace monitoring:
+rackspace_monitoring:
   pkgrepo.managed:
     - humanname: rackspace monitoring
     - name: deb http://stable.packages.cloudmonitoring.rackspace.com/debian-wheezy-x86_64 cloudmonitoring main
@@ -23,3 +23,5 @@ rackspace monitoring:
     - name: newcloud/monitoring/ready
     - data:
         name: {{salt['cmd.run']('xenstore-read name', '')}}
+    - onchanges:
+      - cmd: rackspace_monitoring

@@ -93,8 +93,11 @@ gtmanfred_pkgs:
       - git: gtmanfred
       - pkg: nginx
 
-/usr/share/nginx/www/health/enabled.html:
+health_checks:
   file.managed:
+    - names:
+      - /usr/share/nginx/www/health/enabled.html
+      - /usr/share/nginx/www/health/monitoring.html
     - makedirs: True
     - order: last
     - contents: {{grains['nodename']}}

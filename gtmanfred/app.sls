@@ -93,6 +93,11 @@ gtmanfred_pkgs:
       - git: gtmanfred
       - pkg: nginx
 
+/etc/nginx/sites-enabled/default:
+  file.absent:
+    - require:
+      - pkg: nginx
+
 health_checks:
   file.managed:
     - names:

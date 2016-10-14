@@ -1,3 +1,4 @@
 highstate_run:
-  cmd.state.highstate:
+  caller.state.apply:
     - tgt: blog.gtmanfred.com
+    - args: []

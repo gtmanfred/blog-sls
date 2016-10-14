@@ -1,6 +1,8 @@
 {%- load_yaml as rawmap %}
 Debian:
   service: ssh
+  package: ssh
 RedHat:
   service: sshd
+  package: openssh-server
 {%- endload %}

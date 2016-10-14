@@ -4,6 +4,7 @@
 ssh:
   pkg:
     - installed
+    - name: {{ssh.package}}
 
   service:
     - running

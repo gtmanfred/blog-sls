@@ -28,7 +28,7 @@ gtmanfred_venv:
   virtualenv:
     - managed
     - name: {{ gtmanfred_venv }}
-    - runas: {{ gtmanfred_user }}
+    - user: {{ gtmanfred_user }}
     - require:
       - pkg: python-virtualenv
       - user: {{ gtmanfred_user }}
@@ -38,7 +38,7 @@ gtmanfred:
     - latest
     - name: https://github.com/gtmanfred/blog.gtmanfred.com
     - target: {{ gtmanfred_proj }}
-    - runas: {{ gtmanfred_user }}
+    - user: {{ gtmanfred_user }}
     - force: True
     - force_checkout: True
     - require:
@@ -50,7 +50,7 @@ gtmanfred:
 refresh_pelican:
   cmd:
     - run
-    - user: {{ gtmanfred_user }}
+    - runas: {{ gtmanfred_user }}
     - name: {{ gtmanfred_venv }}/bin/pelican -s {{gtmanfred_proj}}/pelicanconf.py
     - require:
       - virtualenv: gtmanfred_venv
@@ -62,7 +62,7 @@ gtmanfred_theme:
     - latest
     - name: https://github.com/gravyboat/pelican-bootstrap3.git
     - target: {{ gtmanfred_theme }}
-    - runas: {{ gtmanfred_user }}
+    - user: {{ gtmanfred_user }}
     - force: True
     - force_checkout: True
     - require:
@@ -77,7 +77,7 @@ gtmanfred_pkgs:
     - installed
     - bin_env: {{ gtmanfred_venv }}
     - requirements: {{ gtmanfred_proj }}/requirements.txt
-    - runas: {{ gtmanfred_user }}
+    - user: {{ gtmanfred_user }}
     - require:
       - git: gtmanfred
       - pkg: python-pip

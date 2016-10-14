@@ -1,5 +1,0 @@
-{% set ssh = salt['grains.filter_by']({
-    'Debian': {
-        'service': 'ssh',
-    },
-}, merge=salt['pillar.get']('ssh:lookup')) %}

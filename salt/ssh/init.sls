@@ -1,4 +1,5 @@
-{% from "ssh/map.jinja" import ssh with context %}
+{% from "ssh/map.yml" import rawmap with context %}
+{%- set ssh = salt['grains.filter_by'](rawmap, grain='os_family') %}
 
 ssh:
   pkg:

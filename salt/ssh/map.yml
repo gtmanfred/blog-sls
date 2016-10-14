@@ -1,0 +1,6 @@
+{%- load_yaml as rawmap %}
+Debian:
+  service: ssh
+RedHat:
+  service: sshd
+{%- endload %}

@@ -33,46 +33,6 @@ gtmanfred_venv:
       - pkg: python-virtualenv
       - user: {{ gtmanfred_user }}
 
-gtmanfred:
-  git:
-    - latest
-    - name: https://github.com/gtmanfred/blog.gtmanfred.com
-    - target: {{ gtmanfred_proj }}
-    - user: {{ gtmanfred_user }}
-    - force: True
-    - force_checkout: True
-    - require:
-      - pkg: git
-      - virtualenv: gtmanfred_venv
-    - watch_in:
-      - service: nginx
-
-refresh_pelican:
-  cmd:
-    - run
-    - runas: {{ gtmanfred_user }}
-    - name: {{ gtmanfred_venv }}/bin/pelican -s {{gtmanfred_proj}}/pelicanconf.py
-    - require:
-      - virtualenv: gtmanfred_venv
-    - watch:
-      - git: gtmanfred
-
-gtmanfred_theme:
-  git:
-    - latest
-    - name: https://github.com/gravyboat/pelican-bootstrap3.git
-    - target: {{ gtmanfred_theme }}
-    - user: {{ gtmanfred_user }}
-    - force: True
-    - force_checkout: True
-    - require:
-      - virtualenv: gtmanfred_venv
-      - git: gtmanfred
-    - watch_in:
-      - service: nginx
-
-
-gtmanfred_pkgs:
   pip:
     - installed
     - bin_env: {{ gtmanfred_venv }}
@@ -82,6 +42,46 @@ gtmanfred_pkgs:
       - git: gtmanfred
       - pkg: python-pip
       - virtualenv: gtmanfred_venv
+
+gtmanfred:
+  git:
+    - latest
+    - name: https://github.com/gtmanfred/blog.gtmanfred.com
+    - target: {{ gtmanfred_proj }}
+    - user: {{ gtmanfred_user }}
+    - force_checkout: True
+    - require:
+      - pkg: git
+      - virtualenv: gtmanfred_venv
+    - listen_in:
+      - service: nginx
+
+gtmanfred_theme:
+  git:
+    - latest
+    - name: https://github.com/gravyboat/pelican-bootstrap3.git
+    - target: {{ gtmanfred_theme }}
+    - user: {{ gtmanfred_user }}
+    - force_checkout: True
+    - require:
+      - virtualenv: gtmanfred_venv
+      - git: gtmanfred
+    - listen_in:
+      - service: nginx
+
+refresh_pelican:
+  cmd:
+    - run
+    - runas: {{ gtmanfred_user }}
+    - name: {{ gtmanfred_venv }}/bin/pelican -s {{gtmanfred_proj}}/pelicanconf.py
+    - require:
+      - virtualenv: gtmanfred_venv
+      - pip: gtmanfred_venv
+      - git: gtmanfred
+      - git: gtmanfred_theme
+    - onchanges:
+      - git: gtmanfred
+
 
 /etc/nginx/conf.d/gtmanfred.conf:
   file:
@@ -94,7 +94,7 @@ gtmanfred_pkgs:
     - require:
       - git: gtmanfred
       - pkg: nginx
-    - watch_in:
+    - listen_in:
       - service: nginx
 
 /etc/nginx/sites-enabled/default:

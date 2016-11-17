@@ -8,9 +8,16 @@ provisioner:
   name: salt_solo
   log_level: debug
   require_chef: false
-  is_file_root: true
-  salt_file_root: /srv/salt/salt
   salt_run_highstate: true
+  is_file_root: true
+  state_top:
+    base:
+      '*':
+        - nginx
+        - gtmanfred.app
+        - vim
+        - ssh
+        - firewalld
 
 platforms:
   - name: centos-7.2

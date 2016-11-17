@@ -1,4 +1,10 @@
-public:
+firewall:
+  pkg.latest:
+    - name: firewalld
+
+  service.running:
+    - name: firewalld
+
   firewalld.present:
     - name: public
     - default: True

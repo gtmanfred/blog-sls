@@ -16,8 +16,6 @@ include:
     - home: /home/{{ gtmanfred_user}}
     - uid: 2150
     - gid: 2150
-    - groups:
-      - sudo
     - require:
       - group: {{ gtmanfred_user }}
   group:

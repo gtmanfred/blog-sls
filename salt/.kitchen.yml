@@ -46,4 +46,4 @@ suites:
 verifier:
   name: shell
   remote_exec: false
-  command: testinfra -vvv --connection=docker --hosts=root@$KITCHEN_CONTAINER_ID --junit-xml junit-$KITCHEN_INSTANCE.xml test/integration/$KITCHEN_SUITE
+  command: testinfra -vvv --connection=docker --hosts=root@$KITCHEN_CONTAINER_ID test/integration/$KITCHEN_SUITE

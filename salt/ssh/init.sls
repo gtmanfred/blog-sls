@@ -3,7 +3,7 @@
 
 ssh:
   pkg:
-    - installed
+    - latest
     - name: {{ssh.package}}
 
   service:

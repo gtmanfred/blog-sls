@@ -1,3 +1,3 @@
 python-pip:
   pkg:
-    - installed
+    - latest

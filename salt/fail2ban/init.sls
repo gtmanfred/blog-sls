@@ -1,6 +1,6 @@
 fail2ban:
   pkg:
-    - installed
+    - latest 
   service:
     - running
     - listen:

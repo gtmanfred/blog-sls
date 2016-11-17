@@ -1,6 +1,6 @@
 nginx:
   pkg:
-    - installed
+    - latest
   service:
     - running
     - enable: True

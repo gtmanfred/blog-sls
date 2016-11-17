@@ -1,3 +1,3 @@
 python-virtualenv:
   pkg:
-    - installed
+    - latest

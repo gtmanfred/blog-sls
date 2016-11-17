@@ -25,13 +25,12 @@ platforms:
 
 suites:
   - name: default
-  - name: version-1.12.2
     provisioner:
       pillars:
         top.sls:
           base:
             '*':
-							- gtmanfred
+              - gtmanfred
         gtmanfred.sls:
           gtmanfred:
             user: pelican

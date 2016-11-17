@@ -4,7 +4,7 @@ driver:
   use_sudo: false
   privileged: true
   forward:
-    - 8000:80
+    - 80
 
 provisioner:
   name: salt_solo

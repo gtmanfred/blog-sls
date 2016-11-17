@@ -21,6 +21,10 @@ include:
   group:
     - present
     - gid: 2150
+  file:
+    - directory
+    - name: /home/{{gtmanfred_user}}
+    - mode: 755
 
 gtmanfred_venv:
   virtualenv:
@@ -80,6 +84,18 @@ refresh_pelican:
     - onchanges:
       - git: gtmanfred
 
+/etc/nginx/nginx.conf:
+  file:
+    - managed
+    - source: salt://gtmanfred/files/nginx.conf
+    - user: root
+    - group: root
+    - mode: 644
+    - require:
+      - git: gtmanfred
+      - pkg: nginx
+    - listen_in:
+      - service: nginx
 
 /etc/nginx/conf.d/gtmanfred.conf:
   file:

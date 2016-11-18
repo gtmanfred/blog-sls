@@ -111,6 +111,18 @@ refresh_pelican:
     - listen_in:
       - service: nginx
 
+{%- if pillar.ssl is defined %}
+ssl_cert:
+  file.managed:
+    - names:
+      - /etc/pki/tls/certs/{{salt.pillar.get('gtmanfred:url')}}.crt:
+        - contents_pillar: ssl:cert
+      - /etc/pki/tls/private/{{salt.pillar.get('gtmanfred:url')}}.key:
+        - contents_pillar: ssl:key
+    - listen:
+      - service: nginx
+{%- endif %}
+
 /etc/nginx/sites-enabled/default:
   file:
     - absent

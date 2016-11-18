@@ -121,6 +121,9 @@ ssl_cert:
         - contents_pillar: ssl:key
     - listen:
       - service: nginx
+  cmd.run:
+    - name: openssl dhparam -out /etc/pki/tls/certs/dhparam.pem 4096
+    - creates: /etc/pki/tls/certs/dhparam.pem
 {%- endif %}
 
 /etc/nginx/sites-enabled/default:

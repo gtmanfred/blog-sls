@@ -6,4 +6,4 @@ def test_services(Command):
 
 
 def test_ports(Command):
-    assert not Command('firewall-cmd --zone=public --list-ports').stdout
+    assert not Command('firewall-cmd --zone=public --list-ports').stdout.strip()

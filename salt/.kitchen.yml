@@ -22,7 +22,7 @@ provisioner:
         - firewalld
 
 platforms:
-  - name: centos-7.2
+  - name: centos-7
     driver_config:
       run_command: /usr/lib/systemd/systemd
 

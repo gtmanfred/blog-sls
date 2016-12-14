@@ -119,7 +119,7 @@ ssl_cert:
         - contents_pillar: ssl:cert
       - /etc/pki/tls/private/{{salt.pillar.get('gtmanfred:url')}}.key:
         - contents_pillar: ssl:key
-    - listen:
+    - listen_in:
       - service: nginx
   cmd.run:
     - name: openssl dhparam -out /etc/pki/tls/certs/dhparam.pem 4096

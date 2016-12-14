@@ -42,7 +42,7 @@ gtmanfred_venv:
     - user: {{ gtmanfred_user }}
     - require:
       - git: gtmanfred
-      - pkg: python-pip
+      - pkg: python2-pip
       - virtualenv: gtmanfred_venv
 
 gtmanfred:

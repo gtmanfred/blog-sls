@@ -1,3 +1,3 @@
-python-pip:
+python2-pip:
   pkg:
     - latest

@@ -40,7 +40,8 @@ suites:
             user: pelican
             venv: /home/pelican/gtmanfred
             proj: /home/pelican/gtmanfred/site
-            theme: /home/pelican/gtmanfred/site/themes/pelican-bootstrap3
+            themes: /home/pelican/gtmanfred/site/themes/
+            plugins: /home/pelican/gtmanfred/site/plugins/
             url: blog.gtmanfred.com
             root: /home/pelican/gtmanfred/site/output
 

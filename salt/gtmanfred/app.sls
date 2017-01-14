@@ -1,7 +1,7 @@
 {% set gtmanfred_venv = salt['pillar.get']('gtmanfred:venv') %}
 {% set gtmanfred_proj = salt['pillar.get']('gtmanfred:proj') %}
 {% set gtmanfred_user = salt['pillar.get']('gtmanfred:user') %}
-{% set gtmanfred_theme = salt['pillar.get']('gtmanfred:theme') %}
+{% set gtmanfred_themes = salt['pillar.get']('gtmanfred:themes') %}
 {% set gtmanfred_plugins = salt['pillar.get']('gtmanfred:plugins') %}
 
 include:
@@ -59,11 +59,11 @@ gtmanfred:
     - listen_in:
       - service: nginx
 
-gtmanfred_theme:
+gtmanfred_themes:
   git:
     - latest
     - name: https://github.com/getpelican/pelican-themes.git
-    - target: {{ gtmanfred_theme }}
+    - target: {{ gtmanfred_themes }}
     - user: {{ gtmanfred_user }}
     - force_checkout: True
     - depth: 1
@@ -96,7 +96,7 @@ refresh_pelican:
       - virtualenv: gtmanfred_venv
       - pip: gtmanfred_venv
       - git: gtmanfred
-      - git: gtmanfred_theme
+      - git: gtmanfred_themes
       - git: gtmanfred_plugins
     - onchanges:
       - git: gtmanfred

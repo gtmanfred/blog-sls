@@ -7,6 +7,7 @@
 include:
   - git
   - nginx
+  - gettext
   - python.pip
   - python.virtualenv
 

@@ -2,6 +2,7 @@
 {% set gtmanfred_proj = salt['pillar.get']('gtmanfred:proj') %}
 {% set gtmanfred_user = salt['pillar.get']('gtmanfred:user') %}
 {% set gtmanfred_theme = salt['pillar.get']('gtmanfred:theme') %}
+{% set gtmanfred_plugins = salt['pillar.get']('gtmanfred:plugins') %}
 
 include:
   - git
@@ -61,10 +62,25 @@ gtmanfred:
 gtmanfred_theme:
   git:
     - latest
-    - name: https://github.com/gravyboat/pelican-bootstrap3.git
+    - name: https://github.com/getpelican/pelican-themes.git
     - target: {{ gtmanfred_theme }}
     - user: {{ gtmanfred_user }}
     - force_checkout: True
+    - depth: 1
+    - require:
+      - virtualenv: gtmanfred_venv
+      - git: gtmanfred
+    - listen_in:
+      - service: nginx
+
+gtmanfred_plugins:
+  git:
+    - latest
+    - name: https://github.com/getpelican/pelican-plugins
+    - target: {{ gtmanfred_plugins }}
+    - user: {{ gtmanfred_user }}
+    - force_checkout: True
+    - depth: 1
     - require:
       - virtualenv: gtmanfred_venv
       - git: gtmanfred
@@ -81,6 +97,7 @@ refresh_pelican:
       - pip: gtmanfred_venv
       - git: gtmanfred
       - git: gtmanfred_theme
+      - git: gtmanfred_plugins
     - onchanges:
       - git: gtmanfred
 

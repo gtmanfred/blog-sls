@@ -17,6 +17,7 @@ provisioner:
       '*':
         - nginx
         - gtmanfred.app
+        - wedding
         - vim
         - ssh
         - firewalld

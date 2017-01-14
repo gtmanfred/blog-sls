@@ -1,2 +1,0 @@
-gettext:
-  - pkg.latest

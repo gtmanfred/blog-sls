@@ -3,6 +3,7 @@ base:
     - nginx
     - gtmanfred.app
     - wedding
+    - letsencrypt
   '*':
     - vim
     - ssh

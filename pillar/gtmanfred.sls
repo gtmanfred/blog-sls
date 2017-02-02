@@ -16,3 +16,15 @@ gtmanfred:
   plugins: {{ gtmanfred_plugins }}
   url: {{ gtmanfred_url }}
   root: {{ gtmanfred_root }}
+
+letsencrypt:
+  config: |
+    server = https://acme-v01.api.letsencrypt.org/directory
+    email = danielwallace@gtmanfred.com
+    authenticator = webroot
+    webroot-path = {{gtmanfred_root}}
+    agree-tos = True
+    renew-by-default = True
+  domainsets:
+    www:
+      - blog.gtmanfred.com

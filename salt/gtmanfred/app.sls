@@ -129,16 +129,8 @@ refresh_pelican:
     - listen_in:
       - service: nginx
 
-{%- if pillar.ssl is defined %}
+{%- if grains.ssl is defined %}
 ssl_cert:
-  file.managed:
-    - names:
-      - /etc/pki/tls/certs/{{salt.pillar.get('gtmanfred:url')}}.crt:
-        - contents_pillar: ssl:cert
-      - /etc/pki/tls/private/{{salt.pillar.get('gtmanfred:url')}}.key:
-        - contents_pillar: ssl:key
-    - listen_in:
-      - service: nginx
   cmd.run:
     - name: openssl dhparam -out /etc/pki/tls/certs/dhparam.pem 4096
     - creates: /etc/pki/tls/certs/dhparam.pem

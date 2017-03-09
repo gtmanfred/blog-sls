@@ -8,7 +8,7 @@ The blog.gtmanfred.com Salt state repo.
 Testing
 =======
 
-Testing is done with [Test Kitchen]*(http://kitchen.ci/) for machine setup and [testinfra](https://testinfra.readthedocs.io/en/latest/) for integration tests.
+Testing is done with [Test Kitchen](http://kitchen.ci/) for machine setup and [testinfra](https://testinfra.readthedocs.io/en/latest/) for integration tests.
 
 Requirements
 ------------

@@ -1,6 +1,5 @@
 sudo: required
 
-
 language: ruby
 
 services:
@@ -10,7 +9,6 @@ before_install:
     - pip install -r requirements.txt
 
 script:
-  - cd salt
   - bundle exec kitchen verify
 
 notifications:

@@ -8,6 +8,7 @@ driver:
 
 provisioner:
   name: salt_solo
+  local_salt_root: '.'
   log_level: debug
   require_chef: false
   salt_run_highstate: true

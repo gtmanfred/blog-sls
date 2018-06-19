@@ -2,7 +2,7 @@ import docker
 import os
 import pytest
 import requests
-from docker.client import Client
+from docker.client import APIClient as Client
 import docker.tls as tls
 
 

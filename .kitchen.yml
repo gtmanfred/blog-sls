@@ -12,6 +12,7 @@ provisioner:
   log_level: debug
   require_chef: false
   salt_run_highstate: true
+  salt_bootstrap_options: -X
   is_file_root: true
   state_top:
     base:
@@ -22,6 +23,20 @@ provisioner:
         - vim
         - ssh
         - firewalld
+  pillars:
+    top.sls:
+      base:
+        '*':
+          - gtmanfred
+    gtmanfred.sls:
+      gtmanfred:
+        user: pelican
+        venv: /home/pelican/gtmanfred
+        proj: /home/pelican/gtmanfred/site
+        themes: /home/pelican/gtmanfred/site/themes/
+        plugins: /home/pelican/gtmanfred/site/plugins/
+        url: blog.gtmanfred.com
+        root: /home/pelican/gtmanfred/site/output
 
 platforms:
   - name: centos-7
@@ -29,24 +44,12 @@ platforms:
       run_command: /usr/lib/systemd/systemd
 
 suites:
-  - name: default
+  - name: latest
+  - name: develop
     provisioner:
-      pillars:
-        top.sls:
-          base:
-            '*':
-              - gtmanfred
-        gtmanfred.sls:
-          gtmanfred:
-            user: pelican
-            venv: /home/pelican/gtmanfred
-            proj: /home/pelican/gtmanfred/site
-            themes: /home/pelican/gtmanfred/site/themes/
-            plugins: /home/pelican/gtmanfred/site/plugins/
-            url: blog.gtmanfred.com
-            root: /home/pelican/gtmanfred/site/output
+      salt_bootstrap_options: -X git develop &>/dev/null
 
 verifier:
   name: shell
   remote_exec: false
-  command: testinfra -vvv --connection=docker --hosts=root@$KITCHEN_CONTAINER_ID test/integration/$KITCHEN_SUITE
+  command: testinfra -vvv --connection=docker --hosts=root@$KITCHEN_CONTAINER_ID test/integration/default

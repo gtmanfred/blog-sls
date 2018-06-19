@@ -1,11 +1,14 @@
-sudo: required
-language: ruby
+language: python
+python:
+- 3.6
 services:
 - docker
-before_install:
-- pip install -r requirements.txt
+install:
+- bundle install
+- pip install pipenv
+- pipenv install --deploy
 script:
-- bundle exec kitchen verify
+- bundle exec kitchen test
 notifications:
   webhooks: 
     urls:

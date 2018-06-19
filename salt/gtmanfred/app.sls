@@ -68,6 +68,7 @@ gtmanfred_themes:
     - user: {{ gtmanfred_user }}
     - force_checkout: True
     - depth: 1
+    - rev: master
     - require:
       - virtualenv: gtmanfred_venv
       - git: gtmanfred
@@ -82,6 +83,7 @@ gtmanfred_plugins:
     - user: {{ gtmanfred_user }}
     - force_checkout: True
     - depth: 1
+    - rev: master
     - require:
       - virtualenv: gtmanfred_venv
       - git: gtmanfred

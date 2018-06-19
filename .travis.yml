@@ -1,16 +1,11 @@
 sudo: required
-
 language: ruby
-
 services:
-    - docker
-
+- docker
 before_install:
-    - pip install -r requirements.txt
-
+- pip install -r requirements.txt
 script:
-  - bundle exec kitchen verify
-
+- bundle exec kitchen verify
 notifications:
   webhooks: 
     urls:

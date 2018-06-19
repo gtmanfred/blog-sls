@@ -52,4 +52,4 @@ suites:
 verifier:
   name: shell
   remote_exec: false
-  command: testinfra -vvv --connection=docker --hosts=root@$KITCHEN_CONTAINER_ID test/integration/default
+  command: pipenv run testinfra -vvv --connection=docker --hosts=root@$KITCHEN_CONTAINER_ID test/integration/default

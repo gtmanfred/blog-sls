@@ -5,7 +5,8 @@ services:
 - docker
 install:
 - bundle install
-- pip install -r requirements.txt
+- pip install pipenv
+- pipenv install --deploy
 script:
 - bundle exec kitchen test
 notifications:
